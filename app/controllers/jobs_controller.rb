@@ -45,7 +45,7 @@ class JobsController < ApplicationController
 
       case referer
       when "/jobs/new", "/create_job"
-        redirect_to("/jobs")
+        redirect_to("/my_jobs")
       else
         redirect_back(:fallback_location => "/", :notice => "Job created successfully.")
       end

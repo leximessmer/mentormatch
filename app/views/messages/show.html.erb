@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Message #<%= @message.id %></h3>
+  <h3>Message from <%= @message.sender.name %> to <%= @message.recipient.name %></h3>
 </div>
 
 <div class="row">
@@ -22,6 +22,9 @@
           </a>
         <% end %>
       </dd>
+
+      <dt>Date</dt>
+      <dd><%= @message.created_at %></dd>
 
       <dt>Body</dt>
       <dd><%= @message.body %></dd>

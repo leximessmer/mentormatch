@@ -17,17 +17,19 @@
       </tr>
 
       <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= Job.where(user_id: user.id, end_date: nil)[0].industry %></td>
-        <td><%= Job.where(user_id: user.id, end_date: nil)[0].job_title %></td>
-        <td><%= Job.where(user_id: user.id, end_date: nil)[0].employer %></td>
-        <td><%= Degree.where(user_id: user.id).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: user.id).order(graduation_date: :desc)[0].school %></td>        
-        <td>
-          <a href="/users/<%= user.id %>" class="btn btn-primary">Show</a>
-        </td>
-      </tr>
+        <% if (Degree.where(user_id: user.id).exists? && Job.where(user_id: user.id).exists?) then %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= Job.where(user_id: user.id, end_date: nil)[0].industry %></td>
+          <td><%= Job.where(user_id: user.id, end_date: nil)[0].job_title %></td>
+          <td><%= Job.where(user_id: user.id, end_date: nil)[0].employer %></td>
+          <td><%= Degree.where(user_id: user.id).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: user.id).order(graduation_date: :desc)[0].school %></td>        
+          <td>
+            <a href="/users/<%= user.id %>" class="btn btn-primary">Show</a>
+          </td>
+        </tr>
       <% end %>
+        <% end %>
     </table>
     <%= paginate @users, theme: 'twitter-bootstrap-4' %>
   </div>

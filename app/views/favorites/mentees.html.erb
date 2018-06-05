@@ -26,7 +26,7 @@
         <td><%= Degree.where(user_id: favorite.favoriter_id).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: favorite.favoriter_id).order(graduation_date: :desc)[0].school %></td>        
         <td>
           <a href="/users/<%= favorite.favoriter_id %>" class="btn btn-primary">Show</a>
-          <a href="/messages/<%= favorite.id %>" class="btn btn-info" >Send Message</a>
+          <a href="/messages/new" class="btn btn-info" >Send Message</a>
         </td>
       </tr>
       <% end %>

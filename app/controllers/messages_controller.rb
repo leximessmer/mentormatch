@@ -10,9 +10,8 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @q = Message.ransack(params[:q])
-    @messages = @q.result(:distinct => true).includes(:sender, :recipient).page(params[:page]).per(10)
-
+    @messages = Message.where(sender_id: current_user.id).or(Message.where(recipient_id: current_user.id)).page(params[:page]).per(10)
+    
     render("messages/index.html.erb")
   end
 
@@ -60,7 +59,6 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
 
-    @message.sender_id = params[:sender_id]
     @message.recipient_id = params[:recipient_id]
     @message.body = params[:body]
 

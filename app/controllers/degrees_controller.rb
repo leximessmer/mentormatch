@@ -43,7 +43,7 @@ class DegreesController < ApplicationController
 
       case referer
       when "/degrees/new", "/create_degree"
-        redirect_to("/degrees")
+        redirect_to("/my_degrees")
       else
         redirect_back(:fallback_location => "/", :notice => "Degree created successfully.")
       end
