@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.all
+    @messages = Message.page(params[:page]).per(10)
 
     render("messages/index.html.erb")
   end

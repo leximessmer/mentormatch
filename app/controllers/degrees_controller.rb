@@ -10,7 +10,7 @@ class DegreesController < ApplicationController
   end
 
   def index
-    @degrees = Degree.all
+    @degrees = Degree.page(params[:page]).per(10)
 
     render("degrees/index.html.erb")
   end
