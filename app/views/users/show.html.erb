@@ -42,12 +42,14 @@
             <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == favorite.favorite_user %>
+              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -73,12 +75,14 @@
             <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == favorite.favorite_user %>
+              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -104,12 +108,14 @@
             <a href="/jobs/<%= job.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == job.user %>
+              <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -135,12 +141,14 @@
             <a href="/degrees/<%= degree.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_degree/<%= degree.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == degree.user %>
+              <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_degree/<%= degree.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -166,12 +174,14 @@
             <a href="/messages/<%= message.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == message.recipient %>
+              <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -197,12 +207,14 @@
             <a href="/messages/<%= message.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == message.recipient %>
+              <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>
