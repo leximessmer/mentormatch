@@ -5,6 +5,8 @@ class Job < ApplicationRecord
 
   # Validations
 
+  validates :job_title, :presence => true
+
   validates :start_date, :presence => true
 
 end
