@@ -28,8 +28,11 @@
         <td><%= job.user.name %></td>
         <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
-          <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == job.user %>
+            <a href="/jobs/<%= job.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_job/<%= job.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
