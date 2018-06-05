@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Degree resource:
+  # CREATE
+  get "/degrees/new", :controller => "degrees", :action => "new"
+  post "/create_degree", :controller => "degrees", :action => "create"
+
+  # READ
+  get "/degrees", :controller => "degrees", :action => "index"
+  get "/degrees/:id", :controller => "degrees", :action => "show"
+
+  # UPDATE
+  get "/degrees/:id/edit", :controller => "degrees", :action => "edit"
+  post "/update_degree/:id", :controller => "degrees", :action => "update"
+
+  # DELETE
+  get "/delete_degree/:id", :controller => "degrees", :action => "destroy"
+  #------------------------------
+
   # Routes for the Job resource:
   # CREATE
   get "/jobs/new", :controller => "jobs", :action => "new"
