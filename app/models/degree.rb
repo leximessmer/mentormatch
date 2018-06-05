@@ -5,6 +5,8 @@ class Degree < ApplicationRecord
 
   # Validations
 
+  validates :degree, :presence => true
+
   validates :graduation_date, :presence => true
 
   validates :school, :presence => true
