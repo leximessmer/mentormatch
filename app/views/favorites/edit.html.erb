@@ -24,7 +24,7 @@
           Favoriter
         </label>
 
-        <input type="text" id="favoriter_id" name="favoriter_id" placeholder="Favoriter" class="form-control" value="<%= @favorite.favoriter_id %>">
+        <%= select_tag(:favoriter_id, options_from_collection_for_select(User.all, :id, :name, @favorite.favoriter_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for favorited_id -->
