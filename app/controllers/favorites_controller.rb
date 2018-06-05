@@ -10,8 +10,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @q = current_user.fans.ransack(params[:q])
-    @favorites = @q.result(:distinct => true).includes(:user, :favorite_user).page(params[:page]).per(10)
+    @favorites = Favorite.where(favoriter_id: current_user.id).page(params[:page]).per(10)
 
     render("favorites/index.html.erb")
   end

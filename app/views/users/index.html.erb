@@ -22,7 +22,7 @@
         <td><%= Job.where(user_id: user.id, end_date: nil)[0].industry %></td>
         <td><%= Job.where(user_id: user.id, end_date: nil)[0].job_title %></td>
         <td><%= Job.where(user_id: user.id, end_date: nil)[0].employer %></td>
-        <td><%= Degree.where(user_id: user).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: user).order(graduation_date: :desc)[0].school %></td>        
+        <td><%= Degree.where(user_id: user.id).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: user.id).order(graduation_date: :desc)[0].school %></td>        
         <td>
           <a href="/users/<%= user.id %>" class="btn btn-primary">Show</a>
         </td>
