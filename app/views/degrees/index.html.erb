@@ -21,7 +21,13 @@
         <td><%= degree.school %></td>
         <td><%= degree.degree %></td>
         <td><%= degree.graduation_date %></td>
-        <td><%= degree.user.name %></td>
+        <td>
+          <% if degree.user.present? %>
+            <a href="/users/<%= degree.user.id %>">
+              <%= degree.user.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/degrees/<%= degree.id %>" class="btn btn-primary">Show</a>
           

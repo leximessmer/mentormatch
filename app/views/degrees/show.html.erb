@@ -15,7 +15,13 @@
       <dd><%= @degree.graduation_date %></dd>
 
       <dt>User</dt>
-      <dd><%= @degree.user_id %></dd>
+      <dd>
+        <% if @degree.user.present? %>
+          <a href="/users/<%= @degree.user_id %>">
+            <%= @degree.user.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

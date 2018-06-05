@@ -21,7 +21,13 @@
       <dd><%= @job.industry %></dd>
 
       <dt>User</dt>
-      <dd><%= @job.user_id %></dd>
+      <dd>
+        <% if @job.user.present? %>
+          <a href="/users/<%= @job.user_id %>">
+            <%= @job.user.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

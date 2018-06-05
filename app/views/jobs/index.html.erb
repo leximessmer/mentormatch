@@ -25,7 +25,13 @@
         <td><%= job.start_date %></td>
         <td><%= job.end_date %></td>
         <td><%= job.industry %></td>
-        <td><%= job.user.name %></td>
+        <td>
+          <% if job.user.present? %>
+            <a href="/users/<%= job.user.id %>">
+              <%= job.user.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>
           
