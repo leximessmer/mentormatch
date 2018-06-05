@@ -33,7 +33,7 @@
           Favorited
         </label>
 
-        <input type="text" id="favorited_id" name="favorited_id" placeholder="Favorited" class="form-control" value="<%= @favorite.favorited_id %>">
+        <%= select_tag(:favorited_id, options_from_collection_for_select(User.all, :id, :name, @favorite.favorited_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
