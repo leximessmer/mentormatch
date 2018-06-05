@@ -5,4 +5,6 @@ class Favorite < ApplicationRecord
 
   # Validations
 
+  validates :favoriter_id, :presence => true
+
 end
