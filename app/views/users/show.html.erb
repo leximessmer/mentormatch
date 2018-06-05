@@ -1,93 +1,6 @@
 <div class="page-header">
-  <h3>User #<%= @user.id %></h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @user.name %></dd>
-
-      <dt>Email</dt>
-      <dd><%= @user.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @user.password %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/users" class="btn btn-primary">
-        Back
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- A User has many favorites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Favorites
-      </li>
-
-      <% @user.favorites.each do |favorite| %>
-        <li class="list-group-item">
-          <a href="/favorites/<%= favorite.id %>">
-            <%= favorite.favorited_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == favorite.favorite_user %>
-              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many fans -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Fans
-      </li>
-
-      <% @user.fans.each do |favorite| %>
-        <li class="list-group-item">
-          <a href="/favorites/<%= favorite.id %>">
-            <%= favorite.favorited_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == favorite.favorite_user %>
-              <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <h3><%= @user.name %></h3>
+    <p><b>Email:</b>  <%= @user.email %> <p>
 </div>
 
 <!-- A User has many jobs -->
@@ -99,10 +12,10 @@
         Jobs
       </li>
 
-      <% @user.jobs.each do |job| %>
+      <% @user.jobs.order(start_date: :desc).each do |job| %>
         <li class="list-group-item">
           <a href="/jobs/<%= job.id %>">
-            <%= job.job_title %>
+            <%= job.job_title + ", " + job.employer%>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/jobs/<%= job.id %>" class="btn btn-primary">
@@ -135,7 +48,7 @@
       <% @user.degrees.each do |degree| %>
         <li class="list-group-item">
           <a href="/degrees/<%= degree.id %>">
-            <%= degree.school %>
+            <%= degree.degree + ", " + degree.school %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/degrees/<%= degree.id %>" class="btn btn-primary">
@@ -156,68 +69,8 @@
   </div>
 </div>
 
-<!-- A User has many sent_messages -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Sent Messages
-      </li>
-
-      <% @user.sent_messages.each do |message| %>
-        <li class="list-group-item">
-          <a href="/messages/<%= message.id %>">
-            <%= message.sender_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/messages/<%= message.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == message.recipient %>
-              <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many received_messages -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Received Messages
-      </li>
-
-      <% @user.received_messages.each do |message| %>
-        <li class="list-group-item">
-          <a href="/messages/<%= message.id %>">
-            <%= message.sender_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/messages/<%= message.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == message.recipient %>
-              <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="btn-group btn-group-justified">
+  <a href="/users" class="btn btn-primary">
+    Back
+  </a>
 </div>

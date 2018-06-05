@@ -64,7 +64,6 @@ class DegreesController < ApplicationController
     @degree.school = params[:school]
     @degree.degree = params[:degree]
     @degree.graduation_date = params[:graduation_date]
-    @degree.user_id = params[:user_id]
 
     save_status = @degree.save
 

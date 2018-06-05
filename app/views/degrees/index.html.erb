@@ -1,116 +1,8 @@
 <div class="page-header">
   <h1>
     Degrees
-    <a href="/degrees/new" class="btn btn-lg btn-success">New Degree</a>
+    <a href="/degrees/new" class="btn btn-lg btn-success">New degree</a>
   </h1>
-</div><div class="row mb-1">
-  <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "degrees_filters" do |f| %>
-      <p class="lead">Narrow results:</p>
-
-        <div class="form-group">
-    <%= f.label :school_cont, "School contains" %>
-    <%= f.text_field :school_cont, :class => "form-control", :placeholder => "School contains" %>
-  </div>
-
-<div class="form-group">
-          <%= f.label :graduation_date, "Graduation date" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='graduation_dategteqPicker'>
-                  <%= f.text_field :graduation_date_gteq, :class => "form-control", :placeholder => "Graduation date greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='graduation_datelteqPicker'>
-                  <%= f.text_field :graduation_date_lteq, :class => "form-control", :placeholder => "Graduation date less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#graduation_dategteqPicker').datetimepicker({
-                  format: 'MM/DD/YYYY'
-              });
-              $('#graduation_datelteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'MM/DD/YYYY'
-              });
-              $('#graduation_dategteqPicker').on("dp.change", function (e) {
-                  $('#graduation_datelteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#graduation_datelteqPicker').on("dp.change", function (e) {
-                  $('#graduation_dategteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-<div class="form-group">
-    <%= f.label :degree_cont, "Degree contains" %>
-    <%= f.text_field :degree_cont, :class => "form-control", :placeholder => "Degree contains" %>
-  </div>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-      <%= f.label :user_name_cont, "User name contains" %>
-      <%= f.text_field :user_name_cont, :class => "form-control", :placeholder => "User name contains" %>
-    </div>
-
-      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
-      <a href="/degrees" class="btn btn-default btn-block mb-1">Clear filters</a>
-    <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#degrees_filters">
-      Show Filters
-    </a>
-  </div>
 </div>
 
 <div class="row">
@@ -120,31 +12,19 @@
         <th>School</th>
         <th>Degree</th>
         <th>Graduation date</th>
-        <th>User</th>
         <th>Actions</th>
       </tr>
-
-      <% @degrees.each do |degree| %>
-      <tr>
-        <td><%= degree.school %></td>
-        <td><%= degree.degree %></td>
-        <td><%= degree.graduation_date %></td>
-        <td>
-          <% if degree.user.present? %>
-            <a href="/users/<%= degree.user.id %>">
-              <%= degree.user.name %>
-            </a>
-          <% end %>
-        </td>
-        <td>
-          <a href="/degrees/<%= degree.id %>" class="btn btn-primary">Show</a>
-          
-          <% if current_user == degree.user %>
+      <% @degrees.where(user_id: current_user).each do |degree| %>
+        <tr>
+          <td><%= degree.school %></td>
+          <td><%= degree.degree %></td>
+          <td><%= degree.graduation_date %></td>
+          <td>
+            <a href="/degrees/<%= degree.id %>" class="btn btn-primary">Show</a>
             <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_degree/<%= degree.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <% end %>
-        </td>
-      </tr>
+          </td>
+        </tr>
       <% end %>
     </table>
     <%= paginate @degrees, theme: 'twitter-bootstrap-4' %>

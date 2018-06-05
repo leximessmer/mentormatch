@@ -68,10 +68,9 @@ class JobsController < ApplicationController
     @job.start_date = params[:start_date]
     @job.end_date = params[:end_date]
     @job.industry = params[:industry]
-    @job.user_id = params[:user_id]
 
     save_status = @job.save
-
+    
     if save_status == true
       referer = URI(request.referer).path
 
