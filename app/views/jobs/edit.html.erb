@@ -63,14 +63,8 @@
         <input type="text" id="industry" name="industry" placeholder="Industry" class="form-control" value="<%= @job.industry %>">
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :name, @job.user_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Job
