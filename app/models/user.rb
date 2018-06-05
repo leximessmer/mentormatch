@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :jobs,
+             :dependent => :destroy
+
   has_many   :fans,
              :class_name => "Favorite",
              :foreign_key => "favorited_id",
