@@ -1,4 +1,14 @@
 class DegreesController < ApplicationController
+  before_action :current_user_must_be_degree_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_degree_user
+    degree = Degree.find(params[:id])
+
+    unless current_user == degree.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @degrees = Degree.all
 

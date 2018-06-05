@@ -24,8 +24,11 @@
         <td><%= degree.user.name %></td>
         <td>
           <a href="/degrees/<%= degree.id %>" class="btn btn-primary">Show</a>
-          <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_degree/<%= degree.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == degree.user %>
+            <a href="/degrees/<%= degree.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_degree/<%= degree.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
