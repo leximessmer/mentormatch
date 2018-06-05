@@ -10,7 +10,8 @@ class DegreesController < ApplicationController
   end
 
   def index
-    @degrees = Degree.page(params[:page]).per(10)
+    @q = Degree.ransack(params[:q])
+    @degrees = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("degrees/index.html.erb")
   end

@@ -10,7 +10,8 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.page(params[:page]).per(10)
+    @q = Job.ransack(params[:q])
+    @jobs = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("jobs/index.html.erb")
   end
