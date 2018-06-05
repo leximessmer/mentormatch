@@ -41,15 +41,15 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <li><a href="/bios">All Bios</a></li>
+          <li><a href="/favorites">Favorited Mentors</a></li>
+          <li><a href="/mentees">Potential Mentees</a></li>
           <li><a href="/messages">Messages</a></li>
-          <li><a href="/favorites">Favorite Mentors</a></li>
-          <li><a href="/users">Potential Mentees</a></li>
-          <li><a href="/users">All Bios</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/jobs">My Work History</a></li>
-          <li><a href="/degrees">My Education</a></li>
+          <li><a href="/my_jobs">My Work History</a></li>
+          <li><a href="/my_degrees">My Education</a></li>
           <% if current_user.present? %>
             <li>
               <a href="/users/edit">

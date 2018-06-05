@@ -1,7 +1,8 @@
 <div class="page-header">
   <h1>
-    Favorites
+    Favorited Mentors
   </h1>
+  <p>Your favorited mentors will reach out to you if there's a match!</p>
 </div>
 
 <div class="row">
@@ -16,7 +17,7 @@
         <th>Actions</th>
       </tr>
 
-      <% @favorites.where(favoriter_id: current_user).each do |favorite| %>
+      <% @favorites.each do |favorite| %>
       <tr>
         <td><%= User.find(favorite.favorited_id).name %></td>
         <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].industry %></td>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post "/create_degree", :controller => "degrees", :action => "create"
 
   # READ
-  get "/degrees", :controller => "degrees", :action => "index"
+  get "/my_degrees", :controller => "degrees", :action => "index"
   get "/degrees/:id", :controller => "degrees", :action => "show"
 
   # UPDATE
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   post "/create_job", :controller => "jobs", :action => "create"
 
   # READ
-  get "/jobs", :controller => "jobs", :action => "index"
+  get "/my_jobs", :controller => "jobs", :action => "index"
   get "/jobs/:id", :controller => "jobs", :action => "show"
 
   # UPDATE
@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   # READ
   get "/favorites", :controller => "favorites", :action => "index"
   get "/favorites/:id", :controller => "favorites", :action => "show"
+  get "/mentees", :controller => "favorites", :action => "mentees"
 
   # UPDATE
   get "/favorites/:id/edit", :controller => "favorites", :action => "edit"
@@ -73,7 +74,7 @@ Rails.application.routes.draw do
   devise_for :users
   # Routes for the User resource:
   # READ
-  get "/users", :controller => "users", :action => "index"
+  get "/bios", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
 
 

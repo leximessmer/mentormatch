@@ -14,6 +14,12 @@ class FavoritesController < ApplicationController
 
     render("favorites/index.html.erb")
   end
+  
+  def mentees
+    @favorites = Favorite.where(favorited_id: current_user.id).page(params[:page]).per(10)
+
+    render("favorites/mentees.html.erb")
+  end
 
   def show
     @favorite = Favorite.find(params[:id])
