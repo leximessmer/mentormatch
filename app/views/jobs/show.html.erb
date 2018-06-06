@@ -12,10 +12,14 @@
       <dd><%= @job.employer %></dd>
 
       <dt>Start date</dt>
-      <dd><%= @job.start_date %></dd>
+      <dd><%= @job.start_date.strftime("%m/%d/%Y") %></dd>
 
       <dt>End date</dt>
-      <dd><%= @job.end_date %></dd>
+      <% if @job.end_date == nil then %>
+        <dd></dd>
+      <% else %>
+        <dd><%= @job.end_date.strftime("%m/%d/%Y") %></dd>
+      <% end %>
 
       <dt>Industry</dt>
       <dd><%= @job.industry %></dd>
@@ -32,8 +36,8 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/jobs" class="btn btn-primary">
-        Back
+      <a href="/my_jobs" class="btn btn-primary">
+        View My Jobs
       </a>
       <% if current_user == @job.user %>
         <a href="/jobs/<%= @job.id %>/edit" class="btn btn-warning">

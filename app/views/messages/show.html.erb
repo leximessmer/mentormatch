@@ -24,7 +24,7 @@
       </dd>
 
       <dt>Date</dt>
-      <dd><%= @message.created_at %></dd>
+      <dd><%= @message.created_at.strftime("%m/%d/%Y") %></dd>
 
       <dt>Body</dt>
       <dd><%= @message.body %></dd>

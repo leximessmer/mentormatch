@@ -21,8 +21,12 @@
       <tr>
         <td><%= job.job_title %></td>
         <td><%= job.employer %></td>
-        <td><%= job.start_date %></td>
-        <td><%= job.end_date %></td>
+        <td><%= job.start_date.strftime("%m/%d/%Y") %></td>
+        <% if job.end_date == nil then %>
+          <td></td>
+        <% else %>
+          <td><%= job.end_date.strftime("%m/%d/%Y") %></td>
+        <% end %>
         <td><%= job.industry %></td>
         <td>
           <a href="/jobs/<%= job.id %>" class="btn btn-primary">Show</a>

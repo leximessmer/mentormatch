@@ -28,7 +28,7 @@
               <%= message.sender.name %>
             </a>
         </td>
-        <td><%= message.created_at %></td>
+        <td><%= message.created_at.strftime("%m/%d/%Y") %></td>
         <td><%= message.body %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>

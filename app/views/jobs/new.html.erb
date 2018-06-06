@@ -42,7 +42,7 @@
           Start date
         </label>
 
-        <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @job.start_date %>">
+        <input type="date" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @job.start_date %>">
       </div>
 
       <!-- Label and input for end_date -->
@@ -51,7 +51,7 @@
           End date
         </label>
 
-        <input type="text" id="end_date" name="end_date" placeholder="End date" class="form-control" value="<%= @job.end_date %>">
+        <input type="date" id="end_date" name="end_date" placeholder="End date" class="form-control" value="<%= @job.end_date %>">
       </div>
 
       <!-- Label and input for industry -->
@@ -70,7 +70,7 @@
         Create Job
       </button>
       or
-      <a href="/jobs">Cancel</a>
+      <a href="/my_jobs">Cancel</a>
     </form>
   </div>
 </div>

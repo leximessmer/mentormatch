@@ -84,7 +84,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     if URI(request.referer).path == "/messages/#{@message.id}"
-      redirect_to("/", :notice => "Message deleted.")
+      redirect_to("/messages", :notice => "Message deleted.")
     else
       redirect_back(:fallback_location => "/", :notice => "Message deleted.")
     end

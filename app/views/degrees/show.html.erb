@@ -12,7 +12,7 @@
       <dd><%= @degree.degree %></dd>
 
       <dt>Graduation date</dt>
-      <dd><%= @degree.graduation_date %></dd>
+      <dd><%= @degree.graduation_date.strftime("%m/%d/%Y") %></dd>
 
       <dt>User</dt>
       <dd>
@@ -26,8 +26,8 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/degrees" class="btn btn-primary">
-        Back
+      <a href="/my_degrees" class="btn btn-primary">
+        View My Degrees
       </a>
       <% if current_user == @degree.user %>
         <a href="/degrees/<%= @degree.id %>/edit" class="btn btn-warning">
