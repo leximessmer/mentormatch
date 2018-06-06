@@ -35,6 +35,9 @@
       <a href="/messages" class="btn btn-primary">
         Back
       </a>
+      <a href="/messages/new" class="btn btn-info">
+        Reply
+      </a>
       <% if current_user == @message.sender %>
         <a href="/messages/<%= @message.id %>/edit" class="btn btn-warning">
           Edit

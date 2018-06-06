@@ -20,9 +20,15 @@
       <% @favorites.each do |favorite| %>
       <tr>
         <td><%= User.find(favorite.favorited_id).name %></td>
-        <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].industry %></td>
-        <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].job_title %></td>
-        <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].employer %></td>
+          <% if Job.where(user_id: favorite.favorited_id).order(end_date: :asc)[0].end_date == nil then %>
+            <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].industry %></td>
+            <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].job_title %></td>
+            <td><%= Job.where(user_id: favorite.favorited_id, end_date: nil)[0].employer %></td>
+          <% else %>
+            <td><%= Job.where(user_id: favorite.favorited_id).order(end_date: :desc)[0].industry %></td>
+            <td><%= Job.where(user_id: favorite.favorited_id).order(end_date: :desc)[0].job_title %></td>
+            <td><%= Job.where(user_id: favorite.favorited_id).order(end_date: :desc)[0].employer %></td>
+          <% end %>
         <td><%= Degree.where(user_id: favorite.favorited_id).order(graduation_date: :desc)[0].degree + ", " + Degree.where(user_id: favorite.favorited_id).order(graduation_date: :desc)[0].school %></td>        
         <td>
           <a href="/users/<%= favorite.favorited_id %>" class="btn btn-primary">Show</a>

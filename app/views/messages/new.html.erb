@@ -27,7 +27,7 @@
           Recipient
         </label>
 
-        <%= select_tag(:recipient_id, options_from_collection_for_select(User.all, :id, :name, @message.recipient_id), :class => "form-control") %>
+        <%= select_tag(:recipient_id, options_from_collection_for_select(User.where.not(id: current_user.id), :id, :name, @message.recipient_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
